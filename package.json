@@ -1,18 +1,20 @@
 {
   "name": "@sco-techlab/easy-files",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "SCO Techlab (Santiago Comeras Oteo)",
   "description": "Easy nodejs files management",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf ./dist && nest build && cp ./package.json ./dist/easy-files && cp ./README.md ./dist/easy-files && cp ./tsconfig* ./dist/easy-files && chmod -R 777 ./dist"
+    "build": "rm -rf ./dist && nest build && cp ./package.json ./dist/easy-files && cp ./README.md ./dist/easy-files && cp ./tsconfig* ./dist/easy-files && chmod -R 777 ./dist",
+    "watch": "nodemon"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/sco-techlab/easy-files.git"
+    "url": "git+ssh://git@github.com:SCO-Techlab/easy-files.git"
   },
-  "dependencies": {},
-  "devDependencies": { 
-    "@types/multer": "^1.4.12"
+  "devDependencies": {
+    "@types/multer": "^1.4.12",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2"
   }
 }
