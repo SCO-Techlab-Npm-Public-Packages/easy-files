@@ -10,7 +10,7 @@ Easy files is full asynchronus to make easier the files management in the server
 </pre>
 - Import in your application
 <pre>
-    import * as easyfiles from '@app/easy-files';
+    import * as easyfiles from '@sco-techlab/easy-files';
 </pre>
 
 
