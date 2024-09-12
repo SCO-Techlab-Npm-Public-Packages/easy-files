@@ -42,10 +42,23 @@ export interface IFileObjectOptions {
 
 
 ### Export methods
-- fileObject = async ( file: string, options: IFileObjectOptions = {} ): Promise&lt;IMulterFile&gt;
-- dataUrl = async ( file: IMulterFile | string, deleteTmpFile: boolean = true ): Promise&lt;unknown&gt;
-- base64 = async ( file: IMulterFile | string ): Promise&lt;string&gt;
-- mimeType = async ( file: IMulterFile | string ): Promise&lt;string&gt;
-- exists = async ( file: IMulterFile | string ): Promise&lt;boolean&gt;
-- save = async ( file: IMulterFile | string, destination: string, new_name: string = undefined ): Promise&lt;boolean&gt;
-- remove = async ( file: IMulterFile | string ): Promise&lt;boolean&gt;
+- fileObject
+<pre>fileObject = async ( file: string, options: IFileObjectOptions = {} ): Promise&lt;IMulterFile&gt;</pre>
+
+- dataUrl
+<pre>dataUrl = async ( file: IMulterFile | string, deleteTmpFile: boolean = true ): Promise&lt;unknown&gt;</pre>
+
+- base64
+<pre>base64 = async ( file: IMulterFile | string ): Promise&lt;string&gt;</pre>
+
+- mimeType
+<pre>mimeType = async ( file: IMulterFile | string ): Promise&lt;string&gt;</pre>
+
+- exists
+<pre>exists = async ( file: IMulterFile | string ): Promise&lt;boolean&gt;</pre>
+
+- save
+<pre>save = async ( file: IMulterFile | string, destination: string, new_name: string = undefined ): Promise&lt;boolean&gt;</pre>
+
+- remove
+<pre>remove = async ( file: IMulterFile | string ): Promise&lt;boolean&gt;</pre>
