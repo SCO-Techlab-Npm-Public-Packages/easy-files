@@ -64,7 +64,7 @@ export const fileObject = async (file: string, options: IFileObjectOptions = {})
     return multerFile;
 }
 
-export const dataUrl = async (file: Express.Multer.File | string, deleteTmpFile: boolean = true): Promise<unknown> => {
+export const dataUrl = async (file: IMulterFile | string, deleteTmpFile: boolean = true): Promise<unknown> => {
     if (!file) return undefined;
     if (!isMulterFile(file)) file = await fileObject(file as string);
     if (!file['originalname'] || !file['buffer']) return undefined;
@@ -84,7 +84,7 @@ export const dataUrl = async (file: Express.Multer.File | string, deleteTmpFile:
             }
 
             const base64Data = Buffer.from(data).toString('base64');
-            const type = mimeType(filePath as string); // Ajusta el MIME type según el tipo de archivo
+            const type = mimeType(filePath as string);
             const dataUrl = `data:${type};base64,${base64Data}`;
             resolve(dataUrl);
         });
@@ -98,7 +98,7 @@ export const dataUrl = async (file: Express.Multer.File | string, deleteTmpFile:
     return dataUrl;
 }
 
-export const base64 = async (file: Express.Multer.File | string): Promise<string> => {
+export const base64 = async (file: IMulterFile | string): Promise<string> => {
     if (!file) return undefined;
 
     const base64: string = isMulterFile(file)
@@ -117,7 +117,7 @@ export const base64 = async (file: Express.Multer.File | string): Promise<string
     return base64;
 }
 
-export const mimeType = async (file: Express.Multer.File | string): Promise<string> => {
+export const mimeType = async (file: IMulterFile | string): Promise<string> => {
     if (!file) return undefined;
 
     const ext: string = isMulterFile(file)
@@ -138,11 +138,11 @@ export const mimeType = async (file: Express.Multer.File | string): Promise<stri
         case '.pdf':
           return 'application/pdf';
         default:
-          return 'application/octet-stream'; // Tipo MIME genérico para archivos desconocidos
+          return 'application/octet-stream'; // Generic MimeType for unknown files
     }
 }
 
-export const exists = async (file: Express.Multer.File | string): Promise<boolean> => {
+export const exists = async (file: IMulterFile | string): Promise<boolean> => {
     if (!file) return false;
 
     const filePath: string = pathFromInput(file);
@@ -150,7 +150,7 @@ export const exists = async (file: Express.Multer.File | string): Promise<boolea
     return fs.existsSync(filePath);
 }
 
-export const save = async (file: Express.Multer.File | string, destination: string, new_name: string = undefined): Promise<boolean> => {
+export const save = async (file: IMulterFile | string, destination: string, new_name: string = undefined): Promise<boolean> => {
     if (!file) return false;
     if (!destination) return false;
 
@@ -183,7 +183,7 @@ export const save = async (file: Express.Multer.File | string, destination: stri
     return true;
 }
 
-export const remove = async (file: Express.Multer.File | string): Promise<boolean> => {
+export const remove = async (file: IMulterFile | string): Promise<boolean> => {
     if (!file) return false;
 
     let filePath: string = undefined;
