@@ -1,6 +1,6 @@
 {
   "name": "@sco-techlab/easy-files",
-  "version": "10.1.5",
+  "version": "10.1.9",
   "author": "SCO Techlab (Santiago Comeras Oteo)",
   "description": "Easy nodejs files management",
   "main": "index.js",
