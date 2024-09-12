@@ -1,0 +1,12 @@
+{
+  "name": "@sco-techlab/easy-files",
+  "version": "10.1.1",
+  "author": "SCO Techlab (Santiago Comeras Oteo)",
+  "description": "Easy nodejs files management",
+  "main": "index.js",
+  "repository": {},
+  "dependencies": {},
+  "devDependencies": { 
+    "@types/multer": "^1.4.12"
+  }
+}
