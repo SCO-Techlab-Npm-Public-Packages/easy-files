@@ -1,1 +1,1 @@
-### Easy Files
+### @SCO-techlab/easy-files
