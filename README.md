@@ -57,8 +57,17 @@ export interface IFileObjectOptions {
 - exists
 <pre>exists = async ( file: IMulterFile | string ): Promise&lt;boolean&gt;</pre>
 
+- isDirectory
+<pre>isDirectory = async (file: IMulterFile | string): Promise&lt;boolean&gt;</pre>
+
 - save
 <pre>save = async ( file: IMulterFile | string, destination: string, new_name: string = undefined ): Promise&lt;boolean&gt;</pre>
 
 - remove
 <pre>remove = async ( file: IMulterFile | string ): Promise&lt;boolean&gt;</pre>
+
+- write
+<pre>write = async (file: IMulterFile | string, value: string = undefined): Promise&lt;boolean&gt;</pre>
+
+- read
+<pre>read = async (file: IMulterFile | string): Promise&lt;Buffer&gt;</pre>

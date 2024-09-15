@@ -150,6 +150,20 @@ export const exists = async (file: IMulterFile | string): Promise<boolean> => {
     return fs.existsSync(filePath);
 }
 
+export const isDirectory = async (file: IMulterFile | string): Promise<boolean> => {
+    const path: string = isMulterFile(file)
+        ? file['path']
+        : file as string;
+
+    if (!exists(path)) return false;
+
+    const stats = fs.statSync(path);
+    if (!stats) return false;
+
+    if (!stats.isDirectory()) return false;
+    return true;
+}
+
 export const save = async (file: IMulterFile | string, destination: string, new_name: string = undefined): Promise<boolean> => {
     if (!file) return false;
     if (!destination) return false;
@@ -197,7 +211,39 @@ export const remove = async (file: IMulterFile | string): Promise<boolean> => {
     if (!filePath || filePath && filePath.length == 0) return false;
     if (!fs.existsSync(filePath)) return false;
 
-    fs.unlinkSync(filePath);
+    
+    if (isDirectory(filePath)) {
+        fs.rmSync(filePath, { recursive: true });
+    } else {
+        fs.unlinkSync(filePath);
+    }
+
+
     if (fs.existsSync(filePath)) return false;
     return true;
+}
+
+export const write = async (file: IMulterFile | string, value: string = undefined): Promise<boolean> => {
+    const path: string = isMulterFile(file)
+        ? file['path']
+        : file as string;
+
+    const result: boolean = await new Promise<boolean>((resolve) => {
+        fs.writeFile(path, value == undefined ? '' : value, (err) => {
+            if (err) resolve(false);
+            resolve(true);
+        });
+    });
+
+    return result;
+}
+
+export const read = async (file: IMulterFile | string): Promise<Buffer> => {
+    const path: string = isMulterFile(file)
+        ? file['path']
+        : file as string;
+
+    if (!exists(file)) return undefined;
+    if (!isDirectory(file)) return undefined;
+    return fs.readFileSync(path);
 }
