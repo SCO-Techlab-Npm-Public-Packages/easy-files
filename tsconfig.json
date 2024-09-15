@@ -25,6 +25,7 @@
         "@app/easy-files/*": [
           "easy-files/src"
         ]
-      }
-    }
+      },
+    },
+    "exclude": ["examples"],
   }
