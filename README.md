@@ -6,11 +6,11 @@ Easy files is full asynchronus to make easier the files management in the server
 ### Get Started
 - Install dependency
 <pre>
-    npm i @sco-techlab/easy-files
+npm i @sco-techlab/easy-files
 </pre>
 - Import in your application
 <pre>
-    import * as easyfiles from '@sco-techlab/easy-files';
+import * as easyfiles from '@sco-techlab/easy-files';
 </pre>
 
 
@@ -69,5 +69,11 @@ export interface IFileObjectOptions {
 - write
 <pre>write = async (file: IMulterFile | string, value: string = undefined): Promise&lt;boolean&gt;</pre>
 
+- append
+<pre>append = async (file: IMulterFile | string, value: string = undefined): Promise&lt;boolean&gt;</pre>
+
 - read
 <pre>read = async (file: IMulterFile | string): Promise&lt;Buffer&gt;</pre>
+
+- tmpfile
+<pre>tmpfile = async (extension: string, value: string = undefined): Promise&lt;string&gt;</pre>

@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as stream from 'stream';
+import * as os from 'os';
 import { isMulterFile, pathFromInput } from './multer-utils';
 import { uniqueName } from './unique-name';
 
@@ -238,6 +239,19 @@ export const write = async (file: IMulterFile | string, value: string = undefine
     return result;
 }
 
+export const append = async (file: IMulterFile | string, value: string = undefined): Promise<boolean> => {
+    if (!file) return false;
+
+    const path: string = isMulterFile(file)
+        ? file['path']
+        : file as string;
+
+    if (!await exists(path)) return false;
+
+    fs.appendFileSync(path, value == undefined ? '' : value);
+    return true;
+}
+
 export const read = async (file: IMulterFile | string): Promise<Buffer> => {
     const path: string = isMulterFile(file)
         ? file['path']
@@ -246,4 +260,22 @@ export const read = async (file: IMulterFile | string): Promise<Buffer> => {
     if (!exists(file)) return undefined;
     if (!isDirectory(file)) return undefined;
     return fs.readFileSync(path);
+}
+
+export const tmpfile = async (extension: string, value: string = undefined): Promise<string> => {
+    if (!extension) return undefined;
+
+    const tempDir: string = os.tmpdir();
+    if (!tempDir) return undefined;
+
+    const uniquetemporalname: string = uniqueName({ datePrefix: true, tmpPrefix: true, tokenLength: 32});
+    if (!uniquetemporalname) return undefined;
+
+    if (extension[0] == '.') extension = extension.substring(1, extension.length);
+
+    const tmpFilePath: string = `${tempDir}/${uniquetemporalname}.${extension}`;
+    const result: boolean = await write(tmpFilePath, value == undefined ? '' : value);
+    if (!result) return undefined;
+
+    return tmpFilePath;
 }
