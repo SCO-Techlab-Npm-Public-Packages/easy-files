@@ -8,14 +8,14 @@ interface IUniqueName {
 }
 
 export const uniqueName = (options: IUniqueName = { tmpPrefix: true, tokenLength: 32, datePrefix: true }) => {
-    let randomTmpName: string = `${options.tmpPrefix ? 'mftmp-' : ''}${randomString({ tokenLength: options.tokenLength, datePrefix: options.datePrefix})}}`;
+    let randomTmpName: string = `${options.tmpPrefix ? 'mftmp-' : ''}${randomString({ tokenLength: options.tokenLength, datePrefix: options.datePrefix})}`;
     let existTmpFile: boolean = true;
 
     
     while (existTmpFile) {
         existTmpFile = fs.existsSync(`./${randomTmpName}`);
         if (existTmpFile) {
-            randomTmpName = `${options.tmpPrefix ? 'mftmp-' : ''}${randomString({ tokenLength: options.tokenLength, datePrefix: options.datePrefix})}}`;
+            randomTmpName = `${options.tmpPrefix ? 'mftmp-' : ''}${randomString({ tokenLength: options.tokenLength, datePrefix: options.datePrefix})}`;
         }
     }
 
