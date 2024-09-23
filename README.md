@@ -46,7 +46,7 @@ export interface IFileObjectOptions {
 <pre>fileObject = async ( file: string, options: IFileObjectOptions = {} ): Promise&lt;IMulterFile&gt;</pre>
 
 - dataUrl
-<pre>dataUrl = async ( file: IMulterFile | string, deleteTmpFile: boolean = true ): Promise&lt;unknown&gt;</pre>
+<pre>dataUrl = async ( file: IMulterFile | string): Promise&lt;unknown&gt;</pre>
 
 - base64
 <pre>base64 = async ( file: IMulterFile | string ): Promise&lt;string&gt;</pre>

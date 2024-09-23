@@ -65,7 +65,7 @@ export const fileObject = async (file: string, options: IFileObjectOptions = {})
     return multerFile;
 }
 
-export const dataUrl = async (file: IMulterFile | string, deleteTmpFile: boolean = true): Promise<unknown> => {
+export const dataUrl = async (file: IMulterFile | string): Promise<unknown> => {
     if (!file) return undefined;
     if (!isMulterFile(file)) file = await fileObject(file as string);
     if (!file['originalname'] || !file['buffer']) return undefined;
@@ -91,11 +91,7 @@ export const dataUrl = async (file: IMulterFile | string, deleteTmpFile: boolean
         });
     });
 
-
-    if (deleteTmpFile) {
-        fs.unlinkSync(filePath);
-    }
-
+    fs.unlinkSync(filePath);
     return dataUrl;
 }
 

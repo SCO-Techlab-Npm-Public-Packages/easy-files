@@ -1,7 +1,7 @@
 {
   "name": "@sco-techlab/easy-files",
-  "version": "1.0.4",
-  "author": "SCO Techlab (Santiago Comeras Oteo)",
+  "version": "1.0.5",
+  "author": "SCO Techlab (Santiago Comeras Oteo) <sco.techlab@gmail.com> (https://web.sco-techlab.es/)",
   "description": "Easy nodejs files management",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,16 @@
     "type": "git",
     "url": "git+ssh://git@github.com:SCO-Techlab/easy-files.git"
   },
+  "homepage": "https://github.com/SCO-Techlab/easy-files",
+  "keywords": [
+    "Node",
+    "NodeJs",
+    "Express",
+    "Nestjs",
+    "files",
+    "easy files",
+    "Multer"
+  ],
   "devDependencies": {
     "@types/multer": "^1.4.12",
     "nodemon": "^3.1.4",
